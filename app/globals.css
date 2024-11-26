@@ -2,9 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@import url('https://fonts.google.com/share?selection.family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900');
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+
+  --secondary-glow: conic-gradient(
+    from 10deg at 50% 50%,
+    #ccff66 0deg,
+    #66edff 55deg,
+    #ffd666 120deg,
+    #95d5b2 160deg,
+    transparent 360deg
+  );
+
+  --third-glow: conic-gradient(
+    from 90deg at 50% 50%,
+    #66a3ff 0deg,
+    #ffe366 160deg,
+    #ff6666 120deg,
+    #b0ff66 55deg,
+    transparent 360deg
+  );
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,5 +40,81 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden; /* Désactive le défilement */
+  overflow-y: scroll; /* Réactive le défilement vertical */
+  scrollbar-width: none; /* Masquer sur Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Masquer sur Chrome, Safari et Edge */
+}
+
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: -10;
+  opacity:0.8
+}
+
+
+body::before {
+  background: var(--third-glow);
+  border-radius: 50%;
+  width: 50vw;
+  height: 50vw;
+  margin-left: -200px;
+  filter:blur(90px);  
+  top: calc(50vh - 50vw/2);
+  left: calc(60vw );
+  
+}
+
+body::after {
+  background: var(--secondary-glow);
+  border-radius: 50%;
+  width: 500px;
+  height: 700px;
+  filter:blur(90px);
+  top: calc(65vh - 50vw/2);
+  left: calc(30vw - 50vw/2);
+}
+
+
+@keyframes animateBefore {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(200px) scale(0.8);
+
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animateAfter{
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-250px) scale(1.2);
+
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+body::before {
+  /*...previous props*/
+  animation: animateBefore 7s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
+}
+
+body::after {
+  /*...previous props*/
+  animation: animateAfter 7s cubic-bezier(0.47, 0, 0.745, 0.715) infinite;
 }
