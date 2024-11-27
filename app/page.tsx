@@ -1,24 +1,25 @@
+"use client";
+
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
+import { useState } from "react";
 
 export default function DashboardLayout() {
+  const [categoryStats, setCategoryStats] = useState(false);
+
+  const handleCategoriesClick = () => {
+    setCategoryStats(!categoryStats); // Toggle the categories menu visibility
+  };
+
   return (
-
-<div className="flex h-screen">
-      
-      {/* Sidebar */}
-      <Sidebar />
-
-      {/* Main Section */}
-      <div className="flex-1 flex flex-col ml-28"> {/* Ajout de `ml-20` pour espace après la barre */}
-        {/* Header */}
-        <Header />
+    <div className="flex h-screen">
 
         {/* Main Content */}
-        <MainContent />
-      </div>
+        <MainContent
+          marginTop={categoryStats ? "ml-28" : ""} // Add margin-top when categoryStats is true
+        />
+      
     </div>
- 
   );
 }

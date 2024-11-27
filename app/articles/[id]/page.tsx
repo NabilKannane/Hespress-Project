@@ -1,11 +1,7 @@
 "use client";
 
-import Sidebar from "../../components/Sidebar";
-import Header from "../../components//Header";
-
 import { use } from "react";
-import data from "../../../data/hespress_data_most_commented.json"; // Importer les données des articles
-
+import data from "../../../data/hespress_data_most_commented.json"; 
 export default function ArticlePage({
   params,
 }: {
@@ -22,13 +18,10 @@ export default function ArticlePage({
 
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
-      <Sidebar />
-
+      
       {/* Main Section */}
-      <div className="flex-1 flex flex-col ml-28 mr-10">
-        {/* Header */}
-        <Header />
+      <div className="flex-1 flex flex-col ml-10 mr-10">
+     
         <h1 className="text-3xl font-bold m-6">Article</h1>
         {/* Article[id] Content */}
         <div className="isolate p-6 rounded-xl bg-slate-900/60 shadow-lg ring-1 ring-black/5">
