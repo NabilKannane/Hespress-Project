@@ -1,9 +1,9 @@
 import data from "../../data/hespress_data_most_commented.json"
 import Card from "./Card"
 
-export default function MainContent({ marginTop }) {
+export default function MainContent({ mymargin }) {
   return (
-    <main className={`flex-1 p-6  ${marginTop} `}>
+    <main className={`flex-1 p-6 transform duration-1000 ease-in-out  ${mymargin}  `}>
       {/* Welcome Text */} 
       <div className="mb-6 mt-6">
         <h1 className="text-3xl font-bold ">HesProject</h1>

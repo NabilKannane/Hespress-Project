@@ -3,7 +3,7 @@
 import { FaSearch, FaBell, FaUserCircle } from "react-icons/fa";
 import { HambergerMenu } from "iconsax-react";
 
-export default function Header({ marginTop, handleCategoriesClick }) {
+export default function Header({ mymargin, handleCategoriesClick }) {
 
   const categories = [
     { name: "headlines", url: "#headlines" },
@@ -25,7 +25,7 @@ export default function Header({ marginTop, handleCategoriesClick }) {
   };
 
   return (
-    <header className={`flex items-center justify-between p-4 text-gray-400 relative ${marginTop}`}>
+    <header className={`flex items-center justify-between p-4 text-gray-400 relative  transform duration-1000 ease-in-out  ${mymargin}`}>
       {/* Menu */}
       <div className="flex items-center space-x-4">
         <button className="px-4 py-2 rounded-full hover:text-blue-500" onClick={()=>handleCategoriesClick()}>

@@ -12,7 +12,7 @@ export default function DashboardLayout({ children }) {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen ">
       {/* Sidebar */}
       {categoryStats && <Sidebar />}
 
@@ -20,12 +20,12 @@ export default function DashboardLayout({ children }) {
       <div className="flex-1 flex flex-col">
         {/* Header */}
         <Header
-          marginTop={categoryStats ? "ml-28" : ""}
+          mymargin={categoryStats ? "ml-28" : ""}
           handleCategoriesClick={handleCategoriesClick}
         />
 
         {/* Main Content */}
-        <main className={`flex-1 ${categoryStats ? "ml-28" : ""}`}>
+        <main className={`flex-1  transform duration-1000 ease-in-out  ${categoryStats ? "ml-28 " : ""}`}>
           {children} {/* Renders the page's content */}
         </main>
       </div>

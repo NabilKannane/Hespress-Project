@@ -17,7 +17,7 @@ export default function DashboardLayout() {
 
         {/* Main Content */}
         <MainContent
-          marginTop={categoryStats ? "ml-28" : ""} // Add margin-top when categoryStats is true
+          mymargin={categoryStats ? "ml-28" : ""} // Add margin-top when categoryStats is true
         />
       
     </div>
