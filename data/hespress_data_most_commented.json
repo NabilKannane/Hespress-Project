@@ -11,6 +11,13 @@
         ],
         "title": "\"الخطبة الموحدة\" في صلاة الجمعة تحظى بقبول أغلبية أئمة المنابر",
         "post_date": "25-11-2024 09:00",
+        
+        "stats":[{
+            "positive" : 40,
+            "neutral" : 21,
+            "negative": 20,
+            "total_comments": 81
+    }],
         "comments": [
             {
                 "post_id": 1,
