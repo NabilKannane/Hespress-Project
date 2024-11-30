@@ -18,10 +18,10 @@ export default function Card({
     <div>
       {/* Cards */}
       <Link href={`/articles/${id}`}>
-        <div className="isolate p-6 rounded-xl bg-slate-900/60 shadow-lg ring-1 ring-black/5">
+        <div className="isolate p-6 min-h-52 rounded-xl bg-slate-900/60 shadow-lg ring-1 ring-black/5 hover:bg-blue-950  transform duration-1000">
           <div className="flex justify-between mb-5 ">
             <h2 className="text-ml font-sans text-blue-500">{date}</h2>
-            <h2 className="text-ml font-thin text-blue-500">{category}</h2>
+            <h2 className="text-ml font-thin text-white">{category}</h2>
           </div>
           <h2 className="text-xl font-bold mb-3">{title}</h2>
 

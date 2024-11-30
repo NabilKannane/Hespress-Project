@@ -1,9 +1,16 @@
 "use client";
-
+import { useState } from "react";
 import { FaSearch, FaBell, FaUserCircle } from "react-icons/fa";
 import { HambergerMenu } from "iconsax-react";
 
 export default function Header({ mymargin, handleCategoriesClick }) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value); // Mettre à jour la valeur de la recherche
+  };
+
 
   const categories = [
     { name: "headlines", url: "#headlines" },
@@ -53,14 +60,15 @@ export default function Header({ mymargin, handleCategoriesClick }) {
 
 
       {/* Search */}
-      <div className="isolate bg-slate-900/60 ring-1 ring-black/5 flex items-center bg-gray-900 px-12 py-2 rounded-full space-x-2 mr-24 sm:px-6 sm:mr-12">
+      {/* <div className="isolate bg-slate-900/60 ring-1 ring-black/5 flex items-center bg-gray-900 px-12 py-2 rounded-full space-x-2 mr-24 sm:px-6 sm:mr-12">
         <FaSearch />
         <input
           type="text"
           placeholder="Search here..."
           className="bg-transparent focus:outline-none focus:text-time-500"
+          onChange={handleSearchChange} // Mise à jour de l'état
         />
-      </div>
+      </div> */}
 
 
  
