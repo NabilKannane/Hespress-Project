@@ -58,7 +58,6 @@ export default function ArticlePage() {
     event.preventDefault();
     setLoading(true); // Définir l'état de chargement à true
     setError(null); // Réinitialiser les erreurs
-    console.log("test");
     try {
       const response = await fetch(
         "https://f2a7-102-100-251-42.ngrok-free.app/scrape-and-analyze/",
