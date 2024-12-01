@@ -1,45 +1,46 @@
 import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+// Exemple de données avec des timestamps (vous pouvez ajuster les dates selon vos besoins)
 const data = [
   {
-    name: 'Page A',
+    time: '2024-12-01 00:00',
     Positive: 4000,
     Neutral: 2400,
     Negative: 2400,
   },
   {
-    name: 'Page B',
+    time: '2024-12-02 00:00',
     Positive: 3000,
     Neutral: 1398,
     Negative: 2210,
   },
   {
-    name: 'Page C',
+    time: '2024-12-03 00:00',
     Positive: 2000,
     Neutral: 9800,
     Negative: 2290,
   },
   {
-    name: 'Page D',
+    time: '2024-12-04 00:00',
     Positive: 2780,
     Neutral: 3908,
     Negative: 2000,
   },
   {
-    name: 'Page E',
+    time: '2024-12-05 00:00',
     Positive: 1890,
     Neutral: 4800,
     Negative: 2181,
   },
   {
-    name: 'Page F',
+    time: '2024-12-06 00:00',
     Positive: 2390,
     Neutral: 3800,
     Negative: 2500,
   },
   {
-    name: 'Page G',
+    time: '2024-12-07 00:00',
     Positive: 3490,
     Neutral: 4300,
     Negative: 2100,
@@ -64,7 +65,15 @@ export default class Example extends PureComponent {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          {/* Formatage des dates dans l'axe X */}
+          <XAxis 
+            dataKey="time" 
+            tickFormatter={(timeStr) => {
+              // Si vous avez besoin de formater les dates
+              const date = new Date(timeStr);
+              return date.toLocaleDateString(); // Retourne une date lisible
+            }} 
+          />
           <YAxis />
           <Tooltip />
           <Legend />
