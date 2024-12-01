@@ -4,7 +4,7 @@ import Card from "./Card";
 
 export default function MainContent({ mymargin }) {
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 6;
+  const itemsPerPage = 3;
 
   // Découper les articles en pages de 6
   const paginatedArticles = [];
@@ -27,14 +27,14 @@ export default function MainContent({ mymargin }) {
   };
 
   return (
-    <main className={`flex-1 p-6 transform duration-1000 ease-in-out ${mymargin}`}>
+    <div className={`flex-1 p-6 transform duration-1000 ease-in-out ${mymargin}`}>
       {/* Welcome Text */}
-      <div className="mb-6 mt-6">
+      {/* <div className="mb-6 mt-6">
         <h1 className="text-3xl font-bold">HesProject</h1>
         <p className="font-medium mt-2">
           Beyond the Article: Exploring the Power of Reader Reviews.
         </p>
-      </div>
+      </div> */}
 
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 mb-6">
@@ -71,6 +71,8 @@ export default function MainContent({ mymargin }) {
           Suivant
         </button>
       </div>
-    </main>
+
+
+    </div>
   );
 }

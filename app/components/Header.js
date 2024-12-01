@@ -12,20 +12,22 @@ export default function Header({ mymargin, handleCategoriesClick }) {
   };
 
 
-  const categories = [
-    { name: "headlines", url: "#headlines" },
-    // { name: "categories", url: "#categories" },
-    { name: "Most commented", url: "#mostcommented" },
-    { name: "Most view", url: "#mostview" },
-    { name: "Politics", url: "#Politics" },
-    { name: "economy", url: "#economy" },
-    { name: "society", url: "#society" },
-    { name: "culture", url: "#culture" },
-    { name: "sports", url: "#sports" },
-    { name: "mena", url: "#mena" },
-    { name: "international", url: "#international" },
-    { name: "media", url: "#media" },
-  ];
+  // const categories = [
+  //   { name: "headlines", url: "#headlines" },
+  //   // { name: "categories", url: "#categories" },
+  //   { name: "Most commented", url: "#mostcommented" },
+  //   { name: "Most view", url: "#mostview" },
+  //   { name: "Politics", url: "#Politics" },
+  //   { name: "economy", url: "#economy" },
+  //   { name: "society", url: "#society" },
+  //   { name: "culture", url: "#culture" },
+  //   { name: "sports", url: "#sports" },
+  //   { name: "mena", url: "#mena" },
+  //   { name: "international", url: "#international" },
+  //   { name: "media", url: "#media" },
+  // ];
+
+  const categories = []
 
   String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
