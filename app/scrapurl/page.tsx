@@ -319,7 +319,9 @@ export default function ArticlePage() {
         )}
 
         {error && (
-          <div className="text-red-500 text-center my-4">{error}</div>
+          <div className="bg-red-500/50 text-red-200 p-6 mt-8 rounded-xl text-center">
+          {error}
+        </div>
         )}
       </div>
     </div>
