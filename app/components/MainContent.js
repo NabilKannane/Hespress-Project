@@ -93,7 +93,7 @@
 
 import React from 'react'
 
-export default function MainContent({ mymargin, data }) {
+export default function MainContent({data}) {
   return (
     <div>{data.sentiment_statistics.total_comments}</div>
   )

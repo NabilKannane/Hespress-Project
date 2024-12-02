@@ -18,12 +18,17 @@ export default function DashboardLayout() {
         <p className="mt-4 text-lg text-white">
           Start your journey with easy-to-use, high-quality, and affordable infrastructure.
         </p>
-        <div className="mt-8 flex flex-col md:flex-row justify-center gap-8 text-black ">
+        {/* <div className="mt-8 flex flex-col md:flex-row justify-center gap-8 text-black ">
           <CategorySelector/>
           <UrlInput/>
           <BtnScrappingTag/>
-         
-        </div>
+        </div> */}
+      </section>
+
+      <section>
+
+
+        
       </section>
       
     </div>

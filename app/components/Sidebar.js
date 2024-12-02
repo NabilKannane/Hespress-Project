@@ -33,37 +33,8 @@ export default function Sidebar() {
         >
           <Element3 size="22" color={isActive("/") ? "black" : "#d9e3f0"} variant="Bold" />
         </Link>
-        <Link
-          href="/scrapcategory"
-          onClick={() => handleClick("/scrapcategory")}
-          className={`p-2.5 rounded-full ${
-            isActive("/scrapcategory") ? "bg-blue-500" : "text-gray-400 hover:text-blue-500"
-          }`}
-        >
-          <Graph
-            size="22"
-            color={isActive("/scrapcategory") ? "black" : "#d9e3f0"}
-            variant="Bold"
-          />
-        </Link>
-        <Link
-          href="/scrapurl"
-          onClick={() => handleClick("/scrapurl")}
-          className={`p-2.5 rounded-full ${
-            isActive("/scrapurl") ? "bg-blue-500" : "text-gray-400 hover:text-blue-500"
-          }`}
-        >
-          <Global size="22" color={isActive("/scrapurl") ? "black" : "#d9e3f0"} variant="Bold" />
-        </Link>
-        <Link
-          href="/scraptag"
-          onClick={() => handleClick("/scraptag")}
-          className={`p-2.5 rounded-full ${
-            isActive("/scraptag") ? "bg-blue-500" : "text-gray-400 hover:text-blue-500"
-          }`}
-        >
-          <Chart size="22" color={isActive("/scraptag") ? "black" : "#d9e3f0"} variant="Bold" />
-        </Link>
+       
+        
       </nav>
     </aside>
   );

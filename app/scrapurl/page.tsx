@@ -7,6 +7,9 @@ import Pie from "../components/plots/Pie";
 import SimplineChart from "../components/plots/SimplineChart";
 import { ArrowUp , ArrowDown} from "iconsax-react";
 
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 interface ResponseData {
   scraped_data: ScrapedData[];
   sentiment_statistics: SentimentStatistics;
@@ -60,7 +63,7 @@ export default function ArticlePage() {
     setError(null); // Réinitialiser les erreurs
     try {
       const response = await fetch(
-        "https://f2a7-102-100-251-42.ngrok-free.app/scrape-and-analyze/",
+        `${apiUrl!}/scrape-and-analyze`,
         {
           method: "POST",
           headers: {
@@ -81,7 +84,7 @@ export default function ArticlePage() {
       const data: ResponseData = await response.json(); // Typage des données de la réponse
 
       // Vérifier si la structure des données correspond
-      console.log(data); // Affichez les données dans la console pour voir la structure
+      // console.log(data); // Affichez les données dans la console pour voir la structure
       setResponseData(data); // Met à jour les données de la réponse
     } catch (err) {
       setError("Une erreur est survenue lors de l'envoi des données.");
@@ -208,10 +211,10 @@ export default function ArticlePage() {
                     placeholder="Enter a URL"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
-                    className="w-full p-2 shadow-lg rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500/70 bg-slate-700/40 text-xl text-center"
+                    className="w-full p-2 shadow-lg rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-500/70 bg-slate-700/40 text-xl text-center"
                   />
                   <button
-                    className="bg-blue-500 text-white px-4 py-2 w-1/3 rounded-lg hover:bg-blue-700/70 transition duration-500"
+                    className="bg-blue-500 text-white px-4 py-2 w-1/3 rounded-xl hover:bg-blue-700/70 transition duration-500"
                     onClick={(e)=>handleSubmit(e,url)}
                   >
                     Submit
@@ -269,19 +272,19 @@ export default function ArticlePage() {
                     </div>
                   ))}
 
-                  <div className="py-20 col-span-3 bg-slate-900/60 rounded-lg flex justify-center">
-                    <SimplineChart />
+                  <div className="py-20 col-span-3 bg-slate-900/60 rounded-xl flex justify-center">
+                    <SimplineChart data={responseData.time_based_sentiments}/>
                   </div>
                   <div className="rounded-xl bg-slate-900/60 shadow-lg ring-1 ring-black/5 flex justify-center">
                     <Pie data={datachart} />
                   </div>
 
-                  <div className="col-span-2 bg-slate-900/60 rounded-lg text-center p-10">
+                  <div className="col-span-2 bg-slate-900/60 rounded-xl text-center p-10">
                     <h1 className="mb-8">Top 3 Best Comments</h1>
                     {getMostReactedComments().map((comment, index) => (
                       <div
                         key={index}
-                        className="mb-6 p-4 bg-slate-800  hover:bg-green-400/40  trasnform duration-700 rounded-lg shadow"
+                        className="mb-6 p-4 bg-slate-800  hover:bg-green-400/40  trasnform duration-700 rounded-xl shadow"
                       >
                         <p className="text-white font-semibold">
                           {comment.comment}
@@ -293,12 +296,12 @@ export default function ArticlePage() {
                     ))}
                   </div>
 
-                  <div className="col-span-2 bg-slate-900/60 rounded-lg text-center p-10">
+                  <div className="col-span-2 bg-slate-900/60 rounded-xl text-center p-10">
                     <h1 className="mb-8">Top 3 Negative Comments</h1>
                     {getTopNegativeComments().map((comment, index) => (
                       <div
                         key={index}
-                        className="mb-6 p-4 bg-slate-800 hover:bg-red-400/40 rounded-lg shadow tranform duration-700"
+                        className="mb-6 p-4 bg-slate-800 hover:bg-red-400/40 rounded-xl shadow tranform duration-700"
                       >
                         <p className="text-white font-semibold">
                           {comment.comment}
