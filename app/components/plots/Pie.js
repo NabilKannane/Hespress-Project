@@ -2,7 +2,7 @@ import React from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
 
-const COLORS = ["#4ade80", "#9ca3af", "#f87171"]; // Viridis color scale
+const COLORS = ["#77dd77", "#9ca3af", "#c52233"]; // Viridis color scale
 
 const PieChartComponent = ({data}) => {
   return (
