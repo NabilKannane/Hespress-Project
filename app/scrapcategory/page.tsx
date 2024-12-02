@@ -56,7 +56,7 @@ export default function ArticlePage() {
   const [responseData, setResponseData] = useState<ResponseData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [topicTarget, setTopicTarget] = useState<string>("Headlines");
+  const [sectiontarget, setSectiontarget] = useState<string>("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]); // Suivi des catégories sélectionnées
 
   const sections: string[] = ["Headlines", "Most Commented", "Most Viewed"];
@@ -88,6 +88,14 @@ export default function ArticlePage() {
         return [...prevSelectedCategories, category]; // Sélectionner
       }
     });
+    setSectiontarget("")
+  };
+
+  const handleSectionClick = (event: FormEvent,section: string) => {
+    console.log(section)
+    setSectiontarget(section)
+    setSelectedCategories([])
+    handleSectionSubmit(event, section)
   };
 
   const handleSubmit = async (event: FormEvent) => {
@@ -135,7 +143,7 @@ export default function ArticlePage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          mode: section, // Utilise le nom de la section (par exemple "headlines", "most commented", etc.)
+          mode: section.toLowerCase(), // Utilise le nom de la section (par exemple "headlines", "most commented", etc.)
           targets: [""], // Vous pouvez définir ici des cibles spécifiques si nécessaire
           pages: 1,
           output_dir: "comments",
@@ -264,18 +272,18 @@ export default function ArticlePage() {
         </h1>
 
         <section>
-          {/* Boutons des catégories */}
+          {/* Boutons des sections */}
           <div className="w-full overflow-x-auto">
             <div className="grid grid-cols-3 grid-rows-1 gap-4 whitespace-nowrap mb-4">
               {sections.map((section, index) => (
                 <button
                   key={index}
-                  className={`bg-slate-800/70 p-4 rounded-xl ${topicTarget === section.toLowerCase()
-                      ? "bg-blue-600"
-                      : ""
+                  className={`p-4 rounded-xl transform duration-700 ${sectiontarget === section
+                      ? "bg-green-600/70 text-slate-200"
+                      : "bg-slate-800/70"
                     }`} // Ajout de la couleur si sélectionnée
                   value={section}
-                  onClick={(e) => handleSubmit(e)}
+                  onClick={(e)=>handleSectionClick(e,section)}
                 >
                   {section}
                 </button>
@@ -286,9 +294,9 @@ export default function ArticlePage() {
               {categories.map((category, index) => (
                 <button
                   key={index}
-                  className={`bg-slate-800/70 p-4 rounded-xl transform duration-500 ${selectedCategories.includes(category)
-                      ? "bg-gray-500"
-                      : ""
+                  className={`p-4 rounded-xl transform duration-500 ${selectedCategories.includes(category)
+                      ? "bg-blue-700/80 text-blue-300"
+                      : "bg-slate-800/70 "
                     }`} // Style activé pour les catégories sélectionnées
                   value={category}
                   onClick={() => handleCategoryClick(category)} // Utilise handleCategoryClick pour gérer la sélection/désélection
@@ -320,7 +328,7 @@ export default function ArticlePage() {
             <MoonLoader color="rgba(43, 88, 209, 1)" />
           </div>
         ) : (
-          responseData && (
+          responseData && error && (
             <>
             
               <h1 className="text-2xl capitalize font-bold my-6">
@@ -391,7 +399,7 @@ export default function ArticlePage() {
         )}
 
         {error && (
-           <div className="bg-red-500/50 text-red-200 p-6 mt-8 rounded-xl text-center">
+           <div className="bg-red-500/50 text-red-200 p-6 rounded-xl text-center">
            {error}
          </div>
         )}
