@@ -5,7 +5,6 @@ import { MoonLoader } from "react-spinners";
 import Visualization from "../components/Visualization";
 import { ResponseData } from '../api/type';
 import ErrorCard from "../components/ErrorCard"
-import { ArrowUp2 } from "iconsax-react"
 import { AnimatePresence, motion } from "motion/react"
 
 
@@ -44,7 +43,6 @@ export default function ArticlePage() {
   ];
 
   const handleCategoryClick = (category: string) => {
-    // Si la catégorie est déjà sélectionnée, on la retire, sinon on l'ajoute
     setSelectedCategories((prevSelectedCategories) => {
       if (prevSelectedCategories.includes(category)) {
         return prevSelectedCategories.filter((item) => item !== category); // Désélectionner
@@ -129,15 +127,12 @@ export default function ArticlePage() {
     }
   };
 
-
-  const handleIncrement = () => {
-    setPagesScrap((prev) => Math.min(prev + 1, 100)); // Incrémente jusqu'à un max de 100
+  const handlePagesScrapChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value, 10);
+    if (!isNaN(value) && value >= 1 && value <= 100) {
+      setPagesScrap(value);
+    }
   };
-
-  const handleDecrement = () => {
-    setPagesScrap((prev) => Math.max(prev - 1, 1)); // Décrémente jusqu'à un min de 1
-  };
-
 
   return (
     <div className="flex h-screen">
@@ -195,6 +190,7 @@ export default function ArticlePage() {
                   placeholder=" "
                   className="  px-4 py-1 text-black bg-slate-200 w-32 rounded-xl focus:outline-none shadow-xl"
                   value={pagesScrap}
+                  onChange={handlePagesScrapChange}
                   min={1}
                   max={100}
                 />
