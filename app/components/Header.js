@@ -4,14 +4,6 @@ import Link from "next/link"; // Importation de Link
 import { HambergerMenu } from "iconsax-react";
 
 export default function Header({ mymargin, handleCategoriesClick }) {
-  const [currentPath, setCurrentPath] = useState("");
-
-  // useEffect(() => {
-  //   // Mettre à jour l'URL active lors du montage du composant
-  //   setCurrentPath(window.location.pathname);
-  //   console.log(currentPath)
-  // }, [currentPath]);
-
 
   const categories = [
     { name: "Home", url: "/" },
@@ -24,12 +16,6 @@ export default function Header({ mymargin, handleCategoriesClick }) {
     return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
   };
 
-  const headers = () => {
-    setCurrentPath(window.location.pathname);
-    console.log(currentPath) // Toggle the categories menu visibility
-  };
-
-
   return (
     <header
       className={`flex items-center justify-between p-4 text-gray-400 relative transform duration-1000 ease-in-out ${mymargin}`}
@@ -37,7 +23,7 @@ export default function Header({ mymargin, handleCategoriesClick }) {
       {/* Menu */}
       <div className="flex items-center space-x-4">
         <button
-          className="px-4 py-2 rounded-full hover:text-blue-500"
+          className="px-4 py-2"
           onClick={() => handleCategoriesClick()}
         >
           <HambergerMenu size="32" color="#3b82f6" />
@@ -50,7 +36,6 @@ export default function Header({ mymargin, handleCategoriesClick }) {
                 <Link
                   href={category.url}
                   className={"whitespace-nowrap px-2 py-2 rounded-full transition duration-200 ease-in-out"}
-                  onClick={headers}
                 >
                   {category.name.capitalizeFirstLetter()}
                 </Link>
