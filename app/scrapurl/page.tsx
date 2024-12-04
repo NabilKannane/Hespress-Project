@@ -5,6 +5,7 @@ import { MoonLoader } from "react-spinners";
 import { ResponseData } from '../api/type';
 import Visualization from "../components/Visualization";
 import ErrorCard from "../components/ErrorCard"
+import { AnimatePresence, motion } from "motion/react"
 
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -14,6 +15,7 @@ export default function ArticlePage() {
   const [responseData, setResponseData] = useState<ResponseData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [show, setShow] = useState(true); // Section active
 
   // Fonction pour gérer l'envoi des données
   const handleSubmit = async (event: FormEvent, url: string) => {
@@ -56,10 +58,17 @@ export default function ArticlePage() {
   return (
     <div className="flex h-screen">
       <div className="flex-1 flex flex-col mx-28">
-        <h1 className="text-2xl capitalize font-bold my-6">Scrap with URL</h1>
+        <h1 className="text-2xl capitalize font-bold my-6"
+        onClick={() => {
+          setShow(!show);
+          console.log(show);
 
-        <section>
-          <div className="w-full overflow-x-auto mb-6">
+        }}
+        >Scrap with URL</h1>
+        <AnimatePresence>
+
+        {show && <motion.section layout key="modal" animate={{ x: 0, y: 0, opacity: 1 }} initial={{ x: 0, y: -400, opacity: 0 }} exit={{ x: 0, y: -100, opacity: 0 }} >
+        <div className="w-full overflow-x-auto mb-6">
             <div className="flex space-x-4">
               <div className="flex flex-col w-full bg-slate-900/60 p-8 rounded-xl">
                 <label className="text-xl font-semibold text-white mb-2">
@@ -83,7 +92,10 @@ export default function ArticlePage() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
+        }
+        </AnimatePresence>
+
 
         {loading ? (
           <div className="flex justify-center items-center h-3/4">
