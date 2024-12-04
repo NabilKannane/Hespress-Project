@@ -20,8 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-      >
+      <body>
         <DashboardLayout>{children}</DashboardLayout>
       </body>
     </html>
