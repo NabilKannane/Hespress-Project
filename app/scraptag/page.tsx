@@ -6,6 +6,7 @@ import { Add } from "iconsax-react";
 import Visualization from "../components/Visualization";
 import { ResponseData } from '../api/type';
 import ErrorCard from "../components/ErrorCard"
+import { AnimatePresence, motion } from "motion/react"
 
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -19,6 +20,9 @@ export default function ArticlePage() {
   const [responseData, setResponseData] = useState<ResponseData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [pagesScrap, setPagesScrap] = useState(1)
+  const [show, setShow] = useState(true); // Section active
+
 
   const handleAddTag = () => {
     if (tagInput.trim() && !tags.includes(tagInput)) {
@@ -54,7 +58,7 @@ export default function ArticlePage() {
           body: JSON.stringify({
             mode: "tag",
             targets: tags,
-            pages: 2,
+            pages: pagesScrap,
             output_dir: "comments",
           }),
         }
@@ -74,14 +78,21 @@ export default function ArticlePage() {
     }
   };
 
+  const handlePagesScrapChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value, 10);
+    if (!isNaN(value) && value >= 1 && value <= 100) {
+      setPagesScrap(value);
+    }
+  };
 
   return (
     <div className="flex h-screen">
       <div className="flex-1 flex flex-col mx-28">
         <h1 className="text-2xl capitalize font-bold my-6">Scrap with Tags</h1>
 
-        <section>
-          <div className="w-full overflow-x-auto mb-6">
+        <AnimatePresence>
+        {show && <motion.section layout key="modal" animate={{ x: 0, y: 0, opacity: 1 }} initial={{ x: 0, y: -400, opacity: 0 }} exit={{ x: 0, y: -100, opacity: 0 }} >
+        <div className="w-full overflow-x-auto mb-6">
             <div className="flex flex-col w-full bg-slate-900/60 px-8 py-4 rounded-xl">
               <label className="text-xl font-medium text-white mb-4">
                 Tags
@@ -122,8 +133,27 @@ export default function ArticlePage() {
                     </button>
                   </span>
                 ))}
+
               </div>
-              <div className="w-full flex justify-center">
+              
+
+              <div>
+                <p className="font-medium my-4 ">Options</p>
+              <div className="flex justify-center items-center gap-4 whitespace-nowrap bg-slate-900/40 p-4 rounded-xl ">
+                <p className="font-medium ">Number of pages to scrape</p>
+                <input
+                  type="number"
+                  placeholder=" "
+                  className="  px-4 py-1 text-black bg-slate-200 w-32 rounded-xl focus:outline-none shadow-xl"
+                  value={pagesScrap}
+                  onChange={handlePagesScrapChange}
+                  min={1}
+                  max={100}
+                />
+              </div>
+                </div>
+
+                <div className="w-full flex justify-center">
                 {tags.length > 0 && (
                   <button
                     className="bg-blue-700/40 text text-white px-6 py-2 rounded-xl mb-4 w-full mt-8 hover:bg-green-700/70 transition duration-500"
@@ -133,9 +163,11 @@ export default function ArticlePage() {
                   </button>
                 )}
               </div>
+
             </div>
           </div>
-        </section>
+          </motion.section>
+          }
 
         {loading && (
           <div className="flex justify-center items-center h-3/4">
@@ -150,6 +182,7 @@ export default function ArticlePage() {
         {responseData && (
           <Visualization responseData={responseData} showarticles={false} />
         )}
+        </AnimatePresence>
       </div>
     </div>
   );

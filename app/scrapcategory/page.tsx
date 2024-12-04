@@ -19,7 +19,6 @@ export default function ArticlePage() {
   const [sectiontarget, setSectiontarget] = useState<string>("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [pagesScrap, setPagesScrap] = useState(1)
-  const [activeSection, setActiveSection] = useState(null); // Section active
   const [show, setShow] = useState(true); // Section active
 
   const sections: string[] = ["Headlines", "Most Commented", "Most Viewed"];
