@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Element3, Graph, DirectRight, Chart, Global } from "iconsax-react";
+import { Element3, DirectRight } from "iconsax-react";
 import Link from "next/link";
 
 export default function Sidebar() {
