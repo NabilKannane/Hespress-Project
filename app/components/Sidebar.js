@@ -14,7 +14,7 @@ export default function Sidebar() {
   const isActive = (path) => currentPath === path;
 
   return (
-    <aside className="isolate bg-slate-900/60 ring-1 ring-black/5 fixed left-5 top-1/2 h-[95vh] -translate-y-1/2 w-20 bg-slate-900 rounded-full shadow-lg flex flex-col items-center py-6 space-y-20 z-10">
+    <div className="isolate bg-slate-900/60 ring-1 ring-black/5 fixed left-5 top-1/2 h-[95vh] -translate-y-1/2 w-20 bg-slate-900 rounded-full shadow-lg flex flex-col items-center py-6 space-y-20 z-10">
       {/* Logo */}
       <Link href={`/`} className="flex items-center justify-center w-12 h-12 mb-4">
         <div className="flex items-center justify-center rounded-sm">
@@ -36,6 +36,6 @@ export default function Sidebar() {
        
         
       </nav>
-    </aside>
+    </div>
   );
 }

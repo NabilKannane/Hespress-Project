@@ -1,6 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
-import Link from "next/link"; // Importation de Link
+import Link from "next/link";
 import { HambergerMenu } from "iconsax-react";
 
 export default function Header({ mymargin, handleCategoriesClick }) {
