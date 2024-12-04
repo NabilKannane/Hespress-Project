@@ -2,7 +2,6 @@ import Link from "next/link";
 
 export default function Card({
   id,
-  date,
   category,
   title,
   tag = [],

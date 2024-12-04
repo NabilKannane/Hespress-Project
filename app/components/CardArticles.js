@@ -57,7 +57,7 @@ export default function CardArticles({ data }) {
                 key={article.post_id}
                 id={article.post_id}
                 title={article.title}
-                date={article.post_date}
+                // date={article.post_date}
                 commentsCount={article.comments ? article.comments.length : 0}
                 tags={article.tags}
               />
