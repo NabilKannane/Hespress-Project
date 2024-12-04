@@ -1,13 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import CategorySelector from "./components/CategorySelector";
-import UrlInput from "./components/UrlInput";
-import BtnScrappingTag from "./components/BtnScrappingTag";
 import { Flash , Profile2User , Driver} from "iconsax-react";
 
 export default function DashboardLayout() {
-  const [categoryStats, setCategoryStats] = useState(false);
 
   return (
     <div className="flex flex-col h-screen text-white">

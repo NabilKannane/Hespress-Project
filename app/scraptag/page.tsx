@@ -88,7 +88,12 @@ export default function ArticlePage() {
   return (
     <div className="flex h-screen">
       <div className="flex-1 flex flex-col mx-28">
-        <h1 className="text-2xl capitalize font-bold my-6">Scrap with Tags</h1>
+        <h1 className="text-2xl capitalize font-bold my-6"
+         onClick={() => {
+          setShow(!show);
+          console.log(show);
+
+        }}>Scrap with Tags</h1>
 
         <AnimatePresence>
         {show && <motion.section layout key="modal" animate={{ x: 0, y: 0, opacity: 1 }} initial={{ x: 0, y: -400, opacity: 0 }} exit={{ x: 0, y: -100, opacity: 0 }} >
